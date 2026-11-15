@@ -1,4 +1,0 @@
-expression DataFolder = "C:\Portfolio\cyber-events-calendar\data\raw\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
-	lineageTag: 5e95b44d-c865-5797-9b5e-9e9a5d82b0fc
-
-	annotation PBI_ResultType = Text

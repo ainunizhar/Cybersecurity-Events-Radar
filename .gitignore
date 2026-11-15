@@ -1,5 +1,7 @@
-# research data stays private (not published)
-data/
+# only the public event data and the Excel workbook are published from data/
+data/*
+!data/events.csv
+!data/Cyber_Events_Calendar.xlsx
 # Power BI local cache/settings
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
