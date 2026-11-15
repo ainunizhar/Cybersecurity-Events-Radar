@@ -1,0 +1,204 @@
+table Events
+	lineageTag: 6ee0c5d5-3495-5eec-8b40-c4eff8067b9d
+
+	measure Events = COUNTROWS ( Events )
+		formatString: 0
+		lineageTag: 85568dde-d110-56a9-a376-cafd6a61e256
+
+	measure 'Events With Exact Date' = CALCULATE ( [Events], Events[Date Precision] = "day" )
+		formatString: 0
+		lineageTag: cf3621eb-d71e-5629-82a5-05bf35162e33
+
+	measure 'Events Date TBC' = CALCULATE ( [Events], Events[Date Status] = "TBC / Undated" )
+		formatString: 0
+		lineageTag: 78d3234c-2812-552b-be19-02db3107c6f6
+
+	measure 'Exact Date %' = DIVIDE ( [Events With Exact Date], [Events] )
+		formatString: 0%
+		lineageTag: 86667f55-067a-584b-a726-d0c057a505ec
+
+	measure Countries = DISTINCTCOUNT ( Events[Country] )
+		formatString: 0
+		lineageTag: 3713eba9-4db2-5730-831a-da6c0fd2d07f
+
+	measure 'Events Starting' = CALCULATE ( [Events], Events[Date Precision] = "day" )
+		formatString: 0
+		lineageTag: c9a3ae16-cc60-5b72-95b8-7855126e3d5d
+
+	column 'Event ID'
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: d99c3e14-4e3d-570f-96f9-152de879b161
+		summarizeBy: none
+		sourceColumn: Event ID
+
+	column Dataset
+		dataType: string
+		lineageTag: 6846f473-8254-520e-bfdf-a99710089e61
+		summarizeBy: none
+		sourceColumn: Dataset
+
+	column Market
+		dataType: string
+		lineageTag: 294aa9c5-7a65-5600-afee-707642ca6935
+		summarizeBy: none
+		sourceColumn: Market
+
+	column Category
+		dataType: string
+		lineageTag: 3618cf2d-9154-5afe-ab6a-0f5012d3ab44
+		summarizeBy: none
+		sourceColumn: Category
+
+	column 'Event Name'
+		dataType: string
+		lineageTag: d4840d97-d2cc-527c-a896-b985f9bd28c1
+		summarizeBy: none
+		sourceColumn: Event Name
+
+	column Country
+		dataType: string
+		lineageTag: 30488f8c-7e64-5472-94b9-784217839a4c
+		summarizeBy: none
+		sourceColumn: Country
+
+	column City
+		dataType: string
+		lineageTag: 64b4f6ea-9e83-59d1-a901-d312c79419d6
+		summarizeBy: none
+		sourceColumn: City
+
+	column Venue
+		dataType: string
+		lineageTag: 3272f8f4-2a58-553e-9d54-440e92f0a127
+		summarizeBy: none
+		sourceColumn: Venue
+
+	column 'Start (as written)'
+		dataType: string
+		lineageTag: 096c4621-23e0-519f-baeb-ac430ef83a31
+		summarizeBy: none
+		sourceColumn: Start (as written)
+
+	column 'End (as written)'
+		dataType: string
+		lineageTag: b8795036-eb23-557f-9bea-8110c516aaf4
+		summarizeBy: none
+		sourceColumn: End (as written)
+
+	column Year
+		dataType: string
+		lineageTag: fc8b89c1-5a95-5538-b0ba-ce02f5578719
+		summarizeBy: none
+		sourceColumn: Year
+
+	column 'Event Type'
+		dataType: string
+		lineageTag: 52f65873-f143-572b-9200-e27a3c2e748e
+		summarizeBy: none
+		sourceColumn: Event Type
+
+	column Focus
+		dataType: string
+		lineageTag: 1ff63a1d-8268-58eb-a73b-28800dc37bbb
+		summarizeBy: none
+		sourceColumn: Focus
+
+	column Organiser
+		dataType: string
+		lineageTag: 14fcb9b5-375a-5621-a45b-68ae0290efec
+		summarizeBy: none
+		sourceColumn: Organiser
+
+	column 'Scale / Audience'
+		dataType: string
+		lineageTag: d4d57b2c-d7f7-5cbc-93d6-427fc9ca5982
+		summarizeBy: none
+		sourceColumn: Scale / Audience
+
+	column 'MSSP Relevance'
+		dataType: string
+		lineageTag: 53d61ee2-f063-56f5-b836-f3f9e0f60b8a
+		summarizeBy: none
+		sourceColumn: MSSP Relevance
+
+	column 'Source URL'
+		dataType: string
+		lineageTag: 96ca9eb4-8919-5fc5-8eb1-59925638021a
+		summarizeBy: none
+		sourceColumn: Source URL
+
+	column Verification
+		dataType: string
+		lineageTag: 3202c030-e066-5092-8eb4-0a42d691e2fa
+		summarizeBy: none
+		sourceColumn: Verification
+
+	column Note
+		dataType: string
+		lineageTag: b1af1164-8afc-576b-b0aa-2b2cbffcab80
+		summarizeBy: none
+		sourceColumn: Note
+
+	column 'Start Date'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: 2c4ce6b1-8662-59e2-8b16-3ab367b68714
+		summarizeBy: none
+		sourceColumn: Start Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'End Date'
+		dataType: dateTime
+		formatString: dd mmm yyyy
+		lineageTag: c9d89b96-461e-525d-a3c8-b5f3df59c010
+		summarizeBy: none
+		sourceColumn: End Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Month
+		dataType: string
+		lineageTag: e5424d2c-5933-5de5-93e6-8e5c259b8c80
+		summarizeBy: none
+		sourceColumn: Month
+
+	column 'Date Precision'
+		dataType: string
+		lineageTag: c65aa6d3-774c-50e8-8075-153316c8b0c9
+		summarizeBy: none
+		sourceColumn: Date Precision
+
+	column 'Date Status'
+		dataType: string
+		lineageTag: dc1dfd46-b120-5057-af12-e1e40e49627b
+		summarizeBy: none
+		sourceColumn: Date Status
+
+	column 'Date Precision Label'
+		dataType: string
+		lineageTag: 13bf5006-4f39-531b-a424-1ac1fb4fb882
+		summarizeBy: none
+		sourceColumn: Date Precision Label
+
+	partition Events = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(DataFolder & "Cyber_Events_2026_2027.xlsx"), null, true),
+				    Sheet = Source{[Item = "Events", Kind = "Sheet"]}[Data],
+				    Promoted = Table.PromoteHeaders(Sheet, [PromoteAllScalars = true]),
+				    Rows = Table.SelectRows(Promoted, each [Event Name] <> null and [Event Name] <> ""),
+				    WithId = Table.AddIndexColumn(Rows, "Event ID", 1, 1, Int64.Type),
+				    Typed = Table.TransformColumnTypes(WithId, {{"Dataset", type text}, {"Market", type text}, {"Category", type text}, {"Event Name", type text}, {"Country", type text}, {"City", type text}, {"Venue", type text}, {"Start (as written)", type text}, {"End (as written)", type text}, {"Year", type text}, {"Event Type", type text}, {"Focus", type text}, {"Organiser", type text}, {"Scale / Audience", type text}, {"MSSP Relevance", type text}, {"Source URL", type text}, {"Verification", type text}, {"Note", type text}, {"Start Date", type date}, {"End Date", type date}, {"Month", type text}, {"Date Precision", type text}, {"Date Status", type text}}),
+				    PrecisionLabel = Table.AddColumn(Typed, "Date Precision Label", each
+				        if [Date Precision] = "day" then "Exact day"
+				        else if [Date Precision] = "month" then "Month only"
+				        else if [Date Precision] = "year" then "Year only"
+				        else "No date yet", type text)
+				in
+				    PrecisionLabel
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,3 @@
+relationship fe0e85e4-adc4-5619-822a-0fa179b040e9
+	fromColumn: Events.'Start Date'
+	toColumn: Date.Date
