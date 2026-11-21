@@ -1,4 +1,0 @@
-expression DataFolder = "https://raw.githubusercontent.com/ainunizhar/Cyber-Events-Calendar/main/data/" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
-	lineageTag: b8d3c388-f9b5-59d0-9b7a-4fae4625e18d
-
-	annotation PBI_ResultType = Text
