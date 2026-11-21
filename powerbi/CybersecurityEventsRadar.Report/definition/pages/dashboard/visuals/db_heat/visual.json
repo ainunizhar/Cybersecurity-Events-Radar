@@ -104,7 +104,34 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Each square is a day  ·  the darker the square, the more events start that day  ·  hover for the count'"
+                  "Value": "'Each square is a day  ·  the darker the square, the more events start that day  ·  hover a day for its events'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "type": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Canvas'"
+                }
+              }
+            },
+            "section": {
+              "expr": {
+                "Literal": {
+                  "Value": "'day_card'"
                 }
               }
             }
@@ -250,7 +277,7 @@
             "rowPadding": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "1D"
                 }
               }
             },

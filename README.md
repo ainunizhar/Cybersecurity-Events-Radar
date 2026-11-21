@@ -8,7 +8,7 @@ precision level (day, month, year or none) before anything goes on a calendar.
 
 ## What's inside
 **Power BI**
-- **2026 month × day heatmap** of event start dates.
+- **2026 month × day heatmap** of event start dates: hover a day to list its events, click a month to filter.
 - **Monthly rhythm by market** and **event categories**.
 - **"Coming up" agenda** with a live countdown column.
 - KPI tiles, including the busiest month and the next event. Slicers in the header, click-to-cross-filter, and a

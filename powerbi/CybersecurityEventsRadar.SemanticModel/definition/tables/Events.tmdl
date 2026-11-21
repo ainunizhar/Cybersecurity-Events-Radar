@@ -9,7 +9,7 @@ table Events
 		formatString: #,0
 		lineageTag: d559815f-8d68-5c11-bb97-ac53584c66f8
 
-	measure 'Events Date TBC' = CALCULATE ( [Events], Events[Date Status] = "TBC / Undated" )
+	measure 'Events Date TBC' = CALCULATE ( [Events], KEEPFILTERS ( Events[Date Status] = "TBC / Undated" ) ) + 0
 		formatString: #,0
 		lineageTag: 64ee856f-5fd9-58da-bc3c-925aa358f51f
 
@@ -28,14 +28,17 @@ table Events
 	measure 'Event Name' = SELECTEDVALUE ( Events[Event], "Several events" )
 		lineageTag: 1d3d35dc-008e-5664-944b-4d40afe32c94
 
-	measure 'Upcoming Events' = CALCULATE ( [Events], Events[Start Date] >= TODAY () )
+	measure 'Day Label' = VAR d = CALCULATE ( MIN ( 'Date'[Date] ), 'Date'[Year] = 2026 ) VAR n = CALCULATE ( [Events Starting], 'Date'[Year] = 2026 ) + 0 RETURN FORMAT ( d, "d mmmm yyyy" ) & "   ·   " & n & IF ( n = 1, " event", " events" )
+		lineageTag: 2f8b9525-a193-536d-bfa4-60c10ed07f4d
+
+	measure 'Upcoming Events' = CALCULATE ( [Events], Events[Start Date] >= TODAY () ) + 0
 		formatString: #,0
 		lineageTag: c89cddd2-8e03-57d1-8e13-67f0644d6f9c
 
-	measure 'Starts In' = VAR sd = SELECTEDVALUE ( Events[Start Date] ) VAR n = DATEDIFF ( TODAY (), sd, DAY ) RETURN SWITCH ( TRUE (), ISBLANK ( sd ), "date TBC", n < 0, "ended", n = 0, "today", n = 1, "tomorrow", n < 60, "in " & n & " days", "in " & ROUND ( n / 30.4, 0 ) & " months" )
+	measure 'Starts In' = VAR sd = SELECTEDVALUE ( Events[Start Date] ) VAR n = DATEDIFF ( TODAY (), sd, DAY ) RETURN SWITCH ( TRUE (), ISEMPTY ( Events ), BLANK (), ISBLANK ( sd ), "date TBC", n < 0, "ended", n = 0, "today", n = 1, "tomorrow", n < 60, "in " & n & " days", "in " & ROUND ( n / 30.4, 0 ) & " months" )
 		lineageTag: d83f842e-91a3-5e24-9692-e2dd3fdcdbc8
 
-	measure 'KPI Sub Events' = "ASEAN " & FORMAT ( CALCULATE ( [Events], Events[Market] = "ASEAN" ) + 0, "#,0" ) & "  ·  US " & FORMAT ( CALCULATE ( [Events], Events[Market] = "US" ) + 0, "#,0" ) & "  ·  EU " & FORMAT ( CALCULATE ( [Events], Events[Market] = "Europe" ) + 0, "#,0" ) & "  ·  UK " & FORMAT ( CALCULATE ( [Events], Events[Market] = "UK" ) + 0, "#,0" )
+	measure 'KPI Sub Events' = "ASEAN " & FORMAT ( CALCULATE ( [Events], KEEPFILTERS ( Events[Market] = "ASEAN" ) ) + 0, "#,0" ) & "  ·  US " & FORMAT ( CALCULATE ( [Events], KEEPFILTERS ( Events[Market] = "US" ) ) + 0, "#,0" ) & "  ·  EU " & FORMAT ( CALCULATE ( [Events], KEEPFILTERS ( Events[Market] = "Europe" ) ) + 0, "#,0" ) & "  ·  UK " & FORMAT ( CALCULATE ( [Events], KEEPFILTERS ( Events[Market] = "UK" ) ) + 0, "#,0" )
 		lineageTag: 28075422-248c-5d8f-884f-914b26e2ef16
 
 	measure 'KPI Sub Countries' = VAR top1 = TOPN ( 1, VALUES ( Events[Country] ), [Events], DESC ) RETURN "most: " & MAXX ( top1, Events[Country] ) & " (" & FORMAT ( MAXX ( top1, [Events] ), "#,0" ) & ")"
