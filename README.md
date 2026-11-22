@@ -1,4 +1,4 @@
-# Cybersecurity Events Radar 2026–2027 (Power BI + Excel)
+# Cybersecurity Events Radar 2026-2027 (Power BI + Excel)
 
 A calendar of **451 public cybersecurity events** in **48 countries** (ASEAN, the US, Europe and the UK), built twice:
 a one-page Power BI dashboard and an Excel workbook. Free-text dates such as "Q3 2026 (TBC)" are parsed into a
